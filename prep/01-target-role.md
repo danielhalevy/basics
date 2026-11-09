@@ -33,3 +33,9 @@
 ## Resume risk
 Bullets are claim-heavy ("Dramatically..."). Be ready to explain the mechanism and numbers behind each:
 the 75%/15m->2m pipeline, the self-healing troubleshooter, the 60% BigQuery speedup.
+
+## Intel from Daniel's first-round conversation with the interviewer (overrides the JD text)
+- AI is used to FIND ANOMALIES, not to summarize/triage alerts. "Summaries are nonsense, nobody needs them."
+- Design implication: LLM/ML sits in the detection path as an anomaly finder over compact, aggregated
+  behavior features (per asset/tenant), not raw rows; cost, latency, and evaluation (precision/recall) are key.
+- Note: the pasted JD looks AI-generated; trust the interviewer's framing.
