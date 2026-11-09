@@ -113,3 +113,35 @@ Walk through YOUR OWN home in this order. Swap the rooms for your real ones; kee
 1. Now: walk the house from memory, out loud, no notes.
 2. Tonight before sleep: walk it again; for each room say one example from our alerting system.
 3. Tomorrow morning: walk it once more; then 5 minutes before the interview.
+
+## Image hooks (added)
+
+### Toy box in the kids' room (building blocks)
+- Card dealer dealing evenly -> LOAD BALANCER. Identical toy soldiers with no backpacks -> STATELESS services (clones, no memory, add more anytime)
+- Conveyor belt (items wait if workers are slow) + megaphone at the end (many listeners) + rewind button -> QUEUE/LOG (Pub/Sub, Kafka): buffer, fan-out, replay
+- Factory worker standing ON the belt with a stopwatch, counting as items pass -> STREAM PROCESSOR (time windows, never walks to the warehouse)
+- Bank teller with a ledger and rubber stamp; the line gets long -> RELATIONAL DB (Postgres): transactions, correctness, joins; ~10k writes/s
+- Folder per item, papers inside can differ -> DOCUMENT DB (Mongo/Firestore): flexible schema, fetch by id
+- Sticky notes on the fridge -> CACHE (Redis): super fast, small, can fall off (rebuildable)
+- Giant wall of numbered PO boxes -> BIG KEY-VALUE (Bigtable): billions of keys, instant by box number, no "search all"
+- Huge library, librarian answers anything but takes seconds and charges per page read -> WAREHOUSE (BigQuery); shelves by date = partition, sorted by customer = cluster
+- Basement storage unit full of cardboard boxes -> OBJECT STORAGE (GCS): cheap, huge, slow to dig, keep forever
+- Vending machines in every neighborhood -> CDN: copies of static content near users
+- Alarm clock with a checklist that wakes others but does no work -> SCHEDULER (Airflow)
+- Deli ticket dispenser, one number at a time, re-called if missed -> TASK QUEUE (Cloud Tasks): per-job retries + rate control
+
+### Rules of thumb
+- WHERE STATE LIVES: worker's own pocket (minutes) / PO-box wall (key lookups at huge scale) / library (wide questions) / bank teller (money & correctness)
+- RELAY BATON: never let go until the next runner holds it; two hands may hold it -> dedup
+- COFFEE FILTER: big volume in, small out; each layer's storage fits its volume
+- MENU CROWD vs DELIVERY CROWD: many readers -> hang sticky-note copies (cache); many writers -> conveyor belt with crates (queue + batch)
+- DON'T SEND DINERS TO THE LIBRARY: analytics store never serves live requests; precompute -> sticky notes / bank teller
+- RECEIPT vs CCTV: summary (aggregate) for daily use; footage (raw) in the basement for investigations
+
+### Golden rules on the doormat
+- Tiny TENT on the mat: start simple, expand only when the hallway scale shows a number
+- GIFT BOX from the interviewer: never throw an interviewer's requirement away
+- FORK-IN-THE-ROAD sign reading "BECAUSE" with a U-TURN sign behind it: X over Y because Z; revisit if W
+- Knock-knock: "I'll assume X, OK?" -> propose and confirm
+- RADIO always on: think out loud
+- PHOTO ALBUM on the mat: tell real stories from your own work
