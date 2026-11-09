@@ -67,24 +67,30 @@ Walk through YOUR OWN home in this order. Swap the rooms for your real ones; kee
 3. LIVING ROOM — Estimates
    The wall clock shows 100,000 instead of 12. Rule: only move furniture if the number changes the layout.
 
-4. DINING TABLE — Entities
-   The family eats in pipeline order: Tenant (parent) and Users, Agents sitting on Assets (chairs),
-   Events (food) passed to Rules (the strict grandma), who turns some into Detections and bundles
-   them into one Alert (one alarm bell for 50 complaints). Everyone wears a tenant_id wristband.
+4. DINING TABLE — Entities (how to FIND them for any problem)
+   Look around the table and ask 5 questions:
+   - Who is SITTING? -> the actors (user, driver, customer, device...)
+   - What is on their PLATE? -> the things they create/send (post, order, message, event...)
+   - What comes OUT of the kitchen? -> what the system produces (feed, match, alert, report...)
+   - Who PAYS the bill? -> the owner of everything (account / org / tenant) -> its id goes on everything
+   - Is the food raw, cooked, eaten? -> status/lifecycle fields
+   Each guest wears a NAME TAG with only 2-3 fields. Takes 1-2 minutes, then move on.
 
-5. KITCHEN — API (three doors)
-   - Delivery door (INGEST, gRPC): trucks drop crates of 1,000; each crate numbered (batch_id);
-     the driver gets a receipt ONLY after the crate is in the freezer (ack).
-   - Waiter door (QUERY, REST): orders come with page numbers (pagination); identity read from the
-     wristband, never from what the guest claims (tenant from token).
-   - Take-out window (OUTBOUND, webhook): sealed bags (signed), re-delivered if nobody answers (retries).
-   Kitchen poster: "Wild Llamas Rarely Ask Sizes" = Who? Lifecycle(CRUD)? Retry? Allowed? Size?
+5. KITCHEN — API (three doors, for any system)
+   - Delivery door = WRITE path (data comes IN): batched if high volume, numbered crates (idempotency id),
+     receipt only after it's safely stored (ack).
+   - Waiter door = READ path (data goes OUT on request): page numbers (pagination), identity read from
+     the wristband = auth token, never from what the guest claims.
+   - Take-out window = PUSH path (system calls others): sealed bags (signed), re-delivered if nobody answers (retries).
+   Protocol: REST by default; gRPC for machine-to-machine high volume; WebSocket/SSE for live push to a browser.
+   Poster on the fridge: "Wild Llamas Rarely Ask Sizes" = Who & how often? Lifecycle (CRUD)? Retried? Allowed? Size?
 
 6. KIDS' ROOM — High-level design
-   A toy train set. One track per FR. A toy train (the EVENT) rides it while you narrate.
-   Every station has a sign that says WHY. Next to the tracks: a PARKING LOT for hard problems.
-   Each station answers: In/out? Where is state? What if it dies? Fast or slow path?
-   Track map: Agents -> LB -> Ingest -> Pub/Sub -> Processor -> Detections -> Correlator -> Postgres -> Notifier
+   A toy train set. One track per functional requirement - build them one at a time.
+   A toy train (one request / one piece of data) rides the track while you narrate its journey.
+   Every station has a sign that says WHY. Next to the tracks: a PARKING LOT for hard problems you'll solve later.
+   At every station ask: In/out? Where is state? What if it dies? Fast or slow path?
+   Stop when every track exists; remove any station without a WHY sign.
 
 7. BATHROOM — Deep dives (you DIVE into the tub)
    Toys in the tub, one per deep dive (filled in as we learn them).
@@ -92,10 +98,11 @@ Walk through YOUR OWN home in this order. Swap the rooms for your real ones; kee
 8. BALCONY — Wrap-up
    Look at the view: trade-offs made, what you'd monitor (dashboards on the neighbors' windows), v2 on the horizon.
 
-### Rules of thumb hooks
-- "Memory for Minutes, Bigtable for Billions of lookups, BigQuery for Big Questions."
-- Relay race baton: never let go until the next runner holds it (two acks) -> sometimes two runners hold it (duplicates) -> dedup.
-- Funnel = a coffee filter: a million beans in, one cup out.
+### Rules of thumb hooks (generic)
+- Where state lives - "Memory for Minutes, Key-value store for Key lookups at huge scale, Warehouse for Wide questions"
+  (GCP: process memory / Bigtable or Redis / BigQuery). Transactions & correctness -> relational DB (Postgres).
+- Relay race baton: never let go of data until the next runner holds it (acks) -> two runners may hold it (duplicates) -> dedup.
+- Coffee filter: big volume in, small result out - each layer uses storage that fits its volume.
 
 ### Rehearsal schedule
 1. Now: walk the house from memory, out loud, no notes.
