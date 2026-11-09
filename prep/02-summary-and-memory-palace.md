@@ -83,7 +83,12 @@ Walk through YOUR OWN home in this order. Swap the rooms for your real ones; kee
      the wristband = auth token, never from what the guest claims.
    - Take-out window = PUSH path (system calls others): sealed bags (signed), re-delivered if nobody answers (retries).
    Protocol: REST by default; gRPC for machine-to-machine high volume; WebSocket/SSE for live push to a browser.
-   Poster on the fridge: "Wild Llamas Rarely Ask Sizes" = Who & how often? Lifecycle (CRUD)? Retried? Allowed? Size?
+   The FRIDGE (API thinking questions):
+   - An OWL on top hooting "WHO? WHO?" every second -> Who calls it, and how often?
+   - A BUTTERFLY on the door going egg -> caterpillar -> changes color -> dies -> Lifecycle (create, read, update, delete)
+   - A BOOMERANG hits the door twice but leaves only one dent -> Retried? The same request twice must have one effect (idempotency)
+   - A PADLOCK that opens only with your wristband -> Allowed? Identity comes from the token
+   - A MEASURING TAPE inside; food comes out one shelf at a time -> Size? Pagination and limits
 
 6. KIDS' ROOM — High-level design
    A toy train set. One track per functional requirement - build them one at a time.
