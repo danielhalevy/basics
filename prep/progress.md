@@ -23,6 +23,8 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 12. Putting it together: the 3 model answers (prep/03-model-answers.md) — Not started
 
 ## Known weak spots
+- Check-then-act without atomicity (race conditions)
+- Reaches for BigQuery even when data is small
 - Doesn't propose numbers; asks instead
 - Drops requirements the interviewer gave
 - Mixes Postgres (bank teller) and BigQuery (library)
@@ -33,4 +35,5 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 - 2026-11-15 S2: Unit 4 done. Retell 8.5/10. Gaps: thought document DBs suit 1M/s event streams (wrong); Bigtable = key/range lookups not big scans; missed race condition at first, then got it. Postgres vs BigQuery mix-up fixed.
 - 2026-11-15 S3: Unit 5 done. Retell 8.5/10. Strong: stage-level checkpoints + versions, DLQ. Gaps: believed Pub/Sub/Cloud Tasks never duplicate (corrected with docs); "nothing can be done if order needed" -> key by agent; concurrent-run race -> atomic lease; "only one consumer group per partition" -> one consumer WITHIN a group.
 - 2026-11-15 S4: Unit 7 done. Retell 8.5/10 (unit 5 retell regraded to 9). Math perfect ($312 -> <1 cent). Gaps: thought clustering slows inserts; Airflow is not a streaming writer; weekly partitions are for tiny/too-many partitions, not skewed days; vague on what clustering is (sorted blocks, skip).
-- 2026-11-15 S5: small check (3 interleaved questions)
+- 2026-11-15 S5: small check 7.5/10. Q1 Bigtable vs Redis 9/10. Q2 concurrent runs 6/10: check must be ATOMIC (conditional write/lease), can't ask the LLM. Q3 dashboard 8/10: missed that alerts are low-volume and already in Postgres -> rollup in Postgres, BigQuery not needed.
+- NEXT (Nov 16): warm-up recall units 3/4/5/7 -> Unit 11 LLM + AI anomaly -> Units 8+9 reliability & multi-tenant -> model answer 3 -> full mock
