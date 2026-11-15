@@ -30,3 +30,11 @@ Two problems I'm proud of: cloud-save conflicts, where a lost upload reply left 
 - Say "I directed and verified", never "the AI did it all."
 - Know your numbers: ~6,000 tests, 12+ releases, 100+ lanes, 8-10 in parallel, ~1.5 months, solo.
 - Be ready to explain one system deeply yourself (the save/cloud sync is the best one).
+
+## Showing the game on your phone
+- Offer it, don't push it: "I can show you 30 seconds on my phone if you'd like." Best moments: right after the pitch, or at the end.
+- On video calls: hold the phone to the camera, or share the phone screen (join the call from the phone, or mirror it to the computer, e.g. with scrcpy). Test this the day before.
+- Have a 30-60 second path ready: open -> straight to an impressive moment (a boss fight or a Descent run) -> one engineering moment.
+- The killer engineering demo: force-close the app mid-run, reopen it, and the run resumes. That's the save-integrity work, and it connects straight to acks, durability and "delayed, not lost".
+- Backup: a 30-second screen recording in your gallery in case the live demo misbehaves.
+- Before the interview: charge the phone, turn on Do Not Disturb, close other apps, and check that the build opens offline.
