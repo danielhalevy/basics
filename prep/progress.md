@@ -1,7 +1,12 @@
 # Learning plan & progress — System Design (Akamai ExAR)
 
-Interview date: TBD (postponed, "in a few days")
-Pace: ~2 sessions/day, 20-30 min each. Phase: 1 (LEARN)
+Interview date: 2026-11-17 (in 2 days)
+Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
+
+## 2-day plan (priority order)
+- Day 1 (Nov 15): Unit 3 request journey -> Unit 4 databases -> Unit 5 queues -> Unit 7 BigQuery -> small check
+- Day 2 (Nov 16): warm-up recall -> Unit 11 LLMs/AI anomaly -> Unit 8 reliability + 9 multi-tenant -> Unit 12 model answer 3 -> one full mock
+- Interview morning (Nov 17): 10-min recall walk, no new material
 
 ## Units (in order) — state / last date / next review
 1. The interview game: what's scored, the 8 steps, phrasing — Learned (partly) / 2026-11-09 / due
@@ -24,4 +29,4 @@ Pace: ~2 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 - Security domain vocabulary
 
 ## Session log
-- (start here)
+- 2026-11-15 S1: Unit 3 started (chunk 1: load balancer + stateless services)
