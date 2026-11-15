@@ -15,7 +15,7 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 4. Databases: relational vs document vs key-value vs warehouse; indexes — Learned / 2026-11-15 / review 2026-11-16 (replication+sharding moved to Unit 8)
 5. Queues & logs: Pub/Sub vs Kafka vs Cloud Tasks, partitions, ordering, acks, at-least-once, idempotency — Learned / 2026-11-15 / review 2026-11-16
 6. Processing: stream vs batch, windows, late data, Dataflow, Airflow — Learned (partly)
-7. BigQuery in depth: partitioning, clustering, cost per bytes, slots, serving vs analytics — Learned (partly)
+7. BigQuery in depth: partitioning, clustering, cost per bytes, slots, loading, serving vs analytics, views — Learned / 2026-11-15 / review 2026-11-16
 8. Reliability: replication, failover, retries+backoff+jitter, circuit breaker, dead-letter queue, backpressure, queue failure — Learned (partly)
 9. Multi-tenancy & multi-region: isolation, noisy neighbors, quotas, residency, regional cells — Learned (partly)
 10. APIs: REST vs gRPC, pagination, idempotency keys, auth from token, webhooks — Learned (partly)
@@ -32,4 +32,5 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 - 2026-11-15 S1: Unit 3 done. Retell 8/10. Gaps: mixed LB role with statelessness; missed "next request hits a different instance"; cache fix = invalidate on write (he proposed version check). Strength: CDN reasoning, self-corrected that Redis can hold per-user data.
 - 2026-11-15 S2: Unit 4 done. Retell 8.5/10. Gaps: thought document DBs suit 1M/s event streams (wrong); Bigtable = key/range lookups not big scans; missed race condition at first, then got it. Postgres vs BigQuery mix-up fixed.
 - 2026-11-15 S3: Unit 5 done. Retell 8.5/10. Strong: stage-level checkpoints + versions, DLQ. Gaps: believed Pub/Sub/Cloud Tasks never duplicate (corrected with docs); "nothing can be done if order needed" -> key by agent; concurrent-run race -> atomic lease; "only one consumer group per partition" -> one consumer WITHIN a group.
-- 2026-11-15 S4: Unit 7 started (chunk 1: how BigQuery works + pricing)
+- 2026-11-15 S4: Unit 7 done. Retell 8.5/10 (unit 5 retell regraded to 9). Math perfect ($312 -> <1 cent). Gaps: thought clustering slows inserts; Airflow is not a streaming writer; weekly partitions are for tiny/too-many partitions, not skewed days; vague on what clustering is (sorted blocks, skip).
+- 2026-11-15 S5: small check (3 interleaved questions)
