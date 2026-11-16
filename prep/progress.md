@@ -19,7 +19,7 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 8. Reliability: replication, failover, retries+backoff+jitter, circuit breaker, dead-letter queue, backpressure, queue failure — Learned (partly)
 9. Multi-tenancy & multi-region: isolation, noisy neighbors, quotas, residency, regional cells — Learned (partly)
 10. APIs: REST vs gRPC, pagination, idempotency keys, auth from token, webhooks — Learned (partly)
-11. LLMs in production: cascade, cost, latency, quotas, evaluation, prompt injection, AI anomaly detection — Learned (partly)
+11. LLMs in production: cascade, cost, latency, quotas, evaluation, prompt injection, AI anomaly detection — Learned / 2026-11-16 (gaps: lever list, pipeline steps, precision vs recall definitions)
 12. Putting it together: the 3 model answers (prep/03-model-answers.md) — Not started
 
 ## Known weak spots
@@ -38,5 +38,6 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 - 2026-11-15 S5: small check 7.5/10. Q1 Bigtable vs Redis 9/10. Q2 concurrent runs 6/10: check must be ATOMIC (conditional write/lease), can't ask the LLM. Q3 dashboard 8/10: missed that alerts are low-volume and already in Postgres -> rollup in Postgres, BigQuery not needed.
 - 2026-11-16 S6 warm-up 7.5/10: Q1 statelessness question NOT recalled (said readiness/LB; bonus credit for readiness checks). Q2 at-least-once + ID + atomic claim 9/10. Q3 hourly partition + cluster by customer + Postgres serve 8.5/10; missed incremental per-hour compute & selecting only needed columns.
   Units 4,5,7 -> Recalled after a day. Unit 3 statelessness: re-check later.
-- 2026-11-16 S7: Unit 11 chunks 1-4 done. Strong (9-9.5): token math (missed per-minute unit once), Armadillex story polished (on-demand vs batch paths, prefix caching insight), context for LLM judgment. Eval answer 8.5: right instinct (fewer alarms may = missed attacks) but no method (golden set, recall, shadow mode). Awaiting retell.
+- 2026-11-16 S7: Unit 11 chunks 1-4 done. Strong (9-9.5): token math (missed per-minute unit once), Armadillex story polished (on-demand vs batch paths, prefix caching insight), context for LLM judgment. Eval answer 8.5: right instinct (fewer alarms may = missed attacks) but no method (golden set, recall, shadow mode). Retell 7.5/10: great "don't make the LLM the boss"; forgot cascade/cache levers and pipeline steps; precision/recall reversed (fishing-net hook given).
+- 2026-11-16 S8: Units 8+9 combined (chunk 1: reliability toolbox + replication/sharding)
 - PLAN (Nov 16): warm-up recall units 3/4/5/7 -> Unit 11 LLM + AI anomaly -> Units 8+9 reliability & multi-tenant -> model answer 3 -> full mock
