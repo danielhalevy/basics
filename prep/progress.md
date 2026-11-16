@@ -40,5 +40,6 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
   Units 4,5,7 -> Recalled after a day. Unit 3 statelessness: re-check later.
 - 2026-11-16 S7: Unit 11 chunks 1-4 done. Strong (9-9.5): token math (missed per-minute unit once), Armadillex story polished (on-demand vs batch paths, prefix caching insight), context for LLM judgment. Eval answer 8.5: right instinct (fewer alarms may = missed attacks) but no method (golden set, recall, shadow mode). Retell 7.5/10: great "don't make the LLM the boss"; forgot cascade/cache levers and pipeline steps; precision/recall reversed (fishing-net hook given).
 - 2026-11-16 S8: Units 8+9 done. Retell 8/10 (forgot timeouts + backpressure names; replicas=reads/failover, sharding=writes correct). Webhook Q 8/10 (skipped "what goes wrong"); noisy-neighbor Q 6.5/10 (only dedicated capacity; missed per-tenant quota/429 + customer experience).
-- 2026-11-16 S9: FULL MOCK - AI anomaly detection (model answer 3)
+- 2026-11-16 S9: FULL MOCK (AI anomaly detection). Overall: Lean No Hire -> borderline Lean Hire. Questions 8, requirements 5->7.5 (after bucket method), estimates math 8.5 / conclusion 5.5, entities 5, API 7.5, HLD 4->7 (first pulled raw rows out of BigQuery), eval 7.5, wrap-up 7. No stories used.
+- Morning sheet: prep/05-morning-sheet.md
 - PLAN (Nov 16): warm-up recall units 3/4/5/7 -> Unit 11 LLM + AI anomaly -> Units 8+9 reliability & multi-tenant -> model answer 3 -> full mock
