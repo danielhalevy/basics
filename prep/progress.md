@@ -16,8 +16,8 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 5. Queues & logs: Pub/Sub vs Kafka vs Cloud Tasks, partitions, ordering, acks, at-least-once, idempotency — Learned / 2026-11-15 / review 2026-11-16
 6. Processing: stream vs batch, windows, late data, Dataflow, Airflow — Learned (partly)
 7. BigQuery in depth: partitioning, clustering, cost per bytes, slots, loading, serving vs analytics, views — Learned / 2026-11-15 / review 2026-11-16
-8. Reliability: replication, failover, retries+backoff+jitter, circuit breaker, dead-letter queue, backpressure, queue failure — Learned (partly)
-9. Multi-tenancy & multi-region: isolation, noisy neighbors, quotas, residency, regional cells — Learned (partly)
+8. Reliability: replication, failover, retries+backoff+jitter, circuit breaker, dead-letter queue, backpressure, queue failure — Learned / 2026-11-16
+9. Multi-tenancy & multi-region: isolation, noisy neighbors, quotas, residency, regional cells — Learned / 2026-11-16
 10. APIs: REST vs gRPC, pagination, idempotency keys, auth from token, webhooks — Learned (partly)
 11. LLMs in production: cascade, cost, latency, quotas, evaluation, prompt injection, AI anomaly detection — Learned / 2026-11-16 (gaps: lever list, pipeline steps, precision vs recall definitions)
 12. Putting it together: the 3 model answers (prep/03-model-answers.md) — Not started
@@ -39,5 +39,6 @@ Pace: 4-5 sessions/day, 20-30 min each. Phase: 1 (LEARN)
 - 2026-11-16 S6 warm-up 7.5/10: Q1 statelessness question NOT recalled (said readiness/LB; bonus credit for readiness checks). Q2 at-least-once + ID + atomic claim 9/10. Q3 hourly partition + cluster by customer + Postgres serve 8.5/10; missed incremental per-hour compute & selecting only needed columns.
   Units 4,5,7 -> Recalled after a day. Unit 3 statelessness: re-check later.
 - 2026-11-16 S7: Unit 11 chunks 1-4 done. Strong (9-9.5): token math (missed per-minute unit once), Armadillex story polished (on-demand vs batch paths, prefix caching insight), context for LLM judgment. Eval answer 8.5: right instinct (fewer alarms may = missed attacks) but no method (golden set, recall, shadow mode). Retell 7.5/10: great "don't make the LLM the boss"; forgot cascade/cache levers and pipeline steps; precision/recall reversed (fishing-net hook given).
-- 2026-11-16 S8: Units 8+9 combined (chunk 1: reliability toolbox + replication/sharding)
+- 2026-11-16 S8: Units 8+9 done. Retell 8/10 (forgot timeouts + backpressure names; replicas=reads/failover, sharding=writes correct). Webhook Q 8/10 (skipped "what goes wrong"); noisy-neighbor Q 6.5/10 (only dedicated capacity; missed per-tenant quota/429 + customer experience).
+- 2026-11-16 S9: FULL MOCK - AI anomaly detection (model answer 3)
 - PLAN (Nov 16): warm-up recall units 3/4/5/7 -> Unit 11 LLM + AI anomaly -> Units 8+9 reliability & multi-tenant -> model answer 3 -> full mock
